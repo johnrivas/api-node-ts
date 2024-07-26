@@ -1,35 +1,55 @@
 import { Request, Response } from 'express';
 
+import { AuthService } from '../services/auth.services';
+import { CreateUserDto, UpdateUserDto } from '../../domain';
+
 export class AuthController {
-    constructor(){}
+    constructor(
+        private authService: AuthService
+    ){}
 
-    public getUserById = (req: Request, res: Response) => {
+    public getUserById = async (req: Request, res: Response) => {
+        const { id } = req.params;
         try{
-            res.status(200).json({message: 'getUserById'});           
+            const user = await this.authService.getUserById(id);
+
+            const { password, ...userWithoutPassword } = user;
+            res.status(200).json(userWithoutPassword);
         }catch(err){
             res.status(500).json({message: err});
         }
     }
 
-    public createUser = (req: Request, res: Response) => {
+    public createUser = async (req: Request, res: Response) => {
         try{
-            res.status(200).json({message: 'createUser'});           
+            const createUserDto = CreateUserDto.create(req.body);
+            const newUser = await this.authService.createUser(createUserDto);
+
+            const { password, ...userWithoutPassword } = newUser;
+            res.status(200).json(userWithoutPassword);     
         }catch(err){
             res.status(500).json({message: err});
         }
     }
 
-    public updateUser = (req: Request, res: Response) => {
+    public updateUser = async (req: Request, res: Response) => {
+        const { id } = req.params;
         try{
-            res.status(200).json({message: 'updateUser'});           
+            const updateUserDto = UpdateUserDto.create(req.body);
+            const updatedUser = await this.authService.updateUser(id, updateUserDto);
+            const { password, ...userWithoutPassword } = updatedUser;
+            res.status(200).json(userWithoutPassword);        
         }catch(err){
             res.status(500).json({message: err});
         }
     }
 
-    public deleteUser = (req: Request, res: Response) => {
+    public deleteUser = async (req: Request, res: Response) => {
+        const { id } = req.params;
         try{
-            res.status(200).json({message: 'deleteUser'});           
+            const deletedUser = await this.authService.deleteUser(id);
+            const { password, ...userWithoutPassword } = deletedUser;
+            res.status(200).json(userWithoutPassword);           
         }catch(err){
             res.status(500).json({message: err});
         }

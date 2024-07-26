@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('users') //nombre de la tabla del BD
 export class User {
@@ -22,4 +22,10 @@ export class User {
 
     @Column('text', { nullable: false, array: true })
     roles: string[];
+
+    @CreateDateColumn({ type: 'timestamp' }) 
+    created_at: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updated_at: Date;
 }
