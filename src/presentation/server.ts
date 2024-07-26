@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 
 import { envs } from '../config/env.plugin';
+import { postgres } from '../data/postgres';
 
 interface Options{
     port: number;
@@ -25,8 +26,15 @@ export class Server {
         //Routes
         this.app.use('/api', this.routes);
 
-        this.app.listen(envs.PORT, () => {
-            console.log(`Server is running on port ${envs.PORT}`);
+        postgres.initialize().then(() => {
+            console.log('DataBase connected');
+
+            this.app.listen(envs.PORT, () => {
+                console.log(`Server is running on port ${envs.PORT}`);
+            });
+            
+        }).catch((error) => {
+            throw new Error('Error connecting to the database');
         });
     }
 }
