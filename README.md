@@ -21,3 +21,9 @@ This is a simple API built with Node.js and TypeScript. It provides basic CRUD o
 - `npm run dev`: Start the development server with hot-reloading
 - `npm run build`: Compile TypeScript to JavaScript
 - `npm run start`: Start the production server
+
+
+
+**Disclaimer:**  
+The Node.js® logo is used for informational purposes.  
+Node.js® is a trademark of Joyent, Inc., and is used here in accordance with the [OpenJS Foundation Trademark Policy](https://openjsf.org/trademark-policy/).
