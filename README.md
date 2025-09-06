@@ -22,7 +22,9 @@ This is a simple API built with Node.js and TypeScript. It provides basic CRUD o
 - `npm run build`: Compile TypeScript to JavaScript
 - `npm run start`: Start the production server
 
+## Stay in touch
 
+- Author - [John Rivas](https://www.linkedin.com/in/john-rivas-arteaga/)
 
 **Disclaimer:**  
 The Node.js® logo is used for informational purposes.  
