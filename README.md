@@ -22,6 +22,13 @@ This is a simple API built with Node.js and TypeScript. It provides basic CRUD o
 - `npm run build`: Compile TypeScript to JavaScript
 - `npm run start`: Start the production server
 
+## Note
+
+Existe 2 extra branch en este repositorio:
+
+- dbconextion_typeorm: Implementa TypeORM para la conexión a la base de datos.
+- architecture_services: Implementa una arquitectura basada en servicios.
+
 ## Stay in touch
 
 - Author - [John Rivas](https://www.linkedin.com/in/john-rivas-arteaga/)
